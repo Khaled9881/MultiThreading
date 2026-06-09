@@ -130,28 +130,43 @@ namespace Thread_Syncronization
             //}
 
 
-            using ManualResetEvent resetEvent = new ManualResetEvent(false);
+            //using ManualResetEvent resetEvent = new ManualResetEvent(false);
 
 
-            for (int i = 0; i < 3; i++)
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    Thread thread = new Thread(work);
+            //    thread.Name = $"thread {i}";
+            //    thread.Start();
+            //}
+
+
+            //Console.ReadLine();
+            //resetEvent.Set();
+
+
+            //void work()
+            //{
+            //    Console.WriteLine($"{Thread.CurrentThread.Name} is waiting for the signal");
+            //    resetEvent.WaitOne();
+            //    Thread.Sleep(1000);
+            //    Console.WriteLine($"{Thread.CurrentThread.Name} has been released");
+
+            //}
+
+
+
+            for (int i = 0; i < 10; i++)
             {
-                Thread thread = new Thread(work);
-                thread.Name = $"thread {i}";
+                Thread thread = new(work);
                 thread.Start();
             }
 
-
-            Console.ReadLine();
-            resetEvent.Set();
-
-
             void work()
             {
-                Console.WriteLine($"{Thread.CurrentThread.Name} is waiting for the signal");
-                resetEvent.WaitOne();
-                Thread.Sleep(1000);
-                Console.WriteLine($"{Thread.CurrentThread.Name} has been released");
-
+                Console.WriteLine($"Thread {Thread.CurrentThread.Name} started Working");
+                Thread.Sleep(10000);
+                Console.WriteLine($"Thread {Thread.CurrentThread.Name} finished Working");
             }
 
 

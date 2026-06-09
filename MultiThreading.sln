@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37012.4 d17.14
+VisualStudioVersion = 17.14.37012.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreading", "MultiThreading\MultiThreading.csproj", "{7F520E04-E555-46B9-9A26-4306CF8B1E7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thread Syncronization", "Thread Syncronization\Thread Syncronization.csproj", "{309348D9-29A4-466F-941C-86023E9341AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{0826C9EA-7C9B-4752-9A9A-5D235D4B6BC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{309348D9-29A4-466F-941C-86023E9341AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{309348D9-29A4-466F-941C-86023E9341AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{309348D9-29A4-466F-941C-86023E9341AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0826C9EA-7C9B-4752-9A9A-5D235D4B6BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0826C9EA-7C9B-4752-9A9A-5D235D4B6BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0826C9EA-7C9B-4752-9A9A-5D235D4B6BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0826C9EA-7C9B-4752-9A9A-5D235D4B6BC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
