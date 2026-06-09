@@ -32,39 +32,130 @@ namespace Thread_Syncronization
 
 
 
-            Dictionary<int, string> map = new Dictionary<int, string>();
-            ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
+            //Dictionary<int, string> map = new Dictionary<int, string>();
+            //ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
 
-            void add(int key, string value)
+            //void add(int key, string value)
+            //{
+            //    bool lockAcquired = false;
+            //    try
+            //    {
+            //        _lock.EnterWriteLock();
+            //        lockAcquired = true;
+            //        map[key] = value;
+            //    }
+            //    finally
+            //    {
+            //        if (lockAcquired) _lock.ExitWriteLock();
+            //    }
+            //}
+
+            //string get(int key)
+            //{
+            //    bool lockAcquired = false;
+            //    try
+            //    {
+            //        _lock.EnterReadLock();
+            //        lockAcquired = true;
+            //        return map[key];
+            //    }
+            //    finally
+            //    {
+            //        if (lockAcquired) _lock.ExitReadLock();
+            //    }
+            //}
+
+
+
+
+            //using SemaphoreSlim semaphoreSlim = new SemaphoreSlim(3, 3);
+
+            //while (true)
+            //{
+            //    semaphoreSlim.Wait();
+            //    string input = Console.ReadLine();
+            //    Thread thread = new Thread(() =>
+            //    {
+            //        ProcessInput(input);
+            //    });
+
+            //    thread.Start();
+
+
+
+            //}
+
+            //void ProcessInput(string? input)
+            //{
+
+            //    try
+            //    {
+            //        Thread.Sleep(500);
+            //        Console.WriteLine($"Processed Input:  {input}");
+            //    }
+            //    finally
+            //    {
+
+            //        var prevCount = semaphoreSlim.Release();
+            //        Console.WriteLine($"Thread: {Thread.CurrentThread.ManagedThreadId} released the semaphore . prev Count is {semaphoreSlim.CurrentCount}");
+            //    }
+
+            //}
+
+
+
+            //AutoResetEvent resetEvent = new AutoResetEvent(false);
+
+            //Thread thread = new Thread(() =>
+            //{
+            //    while (true)
+            //    {
+            //        resetEvent.WaitOne();
+            //        Console.WriteLine("Procoessed");
+            //    }
+            //});
+            //thread.Start();
+
+
+            //while (true)
+            //{
+            //    if (Console.ReadLine() != "e")
+            //    {
+            //        resetEvent.Set();
+            //        Console.WriteLine("hello");
+
+            //    }
+
+            //}
+
+
+            using ManualResetEvent resetEvent = new ManualResetEvent(false);
+
+
+            for (int i = 0; i < 3; i++)
             {
-                bool lockAcquired = false;
-                try
-                {
-                    _lock.EnterWriteLock();
-                    lockAcquired = true;
-                    map[key] = value;
-                }
-                finally
-                {
-                    if (lockAcquired) _lock.ExitWriteLock();
-                }
+                Thread thread = new Thread(work);
+                thread.Name = $"thread {i}";
+                thread.Start();
             }
 
-            string get(int key)
+
+            Console.ReadLine();
+            resetEvent.Set();
+
+
+            void work()
             {
-                bool lockAcquired = false;
-                try
-                {
-                    _lock.EnterReadLock();
-                    lockAcquired = true;
-                    return map[key];
-                }
-                finally
-                {
-                    if (lockAcquired) _lock.ExitReadLock();
-                }
+                Console.WriteLine($"{Thread.CurrentThread.Name} is waiting for the signal");
+                resetEvent.WaitOne();
+                Thread.Sleep(1000);
+                Console.WriteLine($"{Thread.CurrentThread.Name} has been released");
+
             }
+
+
+
         }
     }
 }
