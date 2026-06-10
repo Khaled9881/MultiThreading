@@ -266,29 +266,46 @@ namespace Thread_Syncronization
             //Console.WriteLine("Done");
 
 
-            Console.WriteLine("progeam Startedd");
-            workAsunc();
-            await work2();
+            //Console.WriteLine("progeam Startedd");
+            //workAsunc();
+            //await work2();
 
-            Console.WriteLine("program Ended");
-            Console.ReadLine();
-
-
+            //Console.WriteLine("program Ended");
+            //Console.ReadLine();
 
 
-            async Task workAsunc()
+
+
+            //async Task workAsunc()
+            //{
+            //    Console.WriteLine("Taask Started");
+            //    await Task.Delay(2000);
+            //    Console.WriteLine("Taask Finihsed");
+            //}
+
+            //async Task work2()
+            //{
+            //    Console.WriteLine("Taask22 Started");
+            //    await Task.Delay(10);
+            //    Console.WriteLine("Taask22 Finihsed");
+            //}
+
+            int[] arr = Enumerable.Range(0, 100).ToArray();
+            object l = new object();
+
+            int sum = 0;
+
+            Parallel.For(0, arr.Length, (i) =>
             {
-                Console.WriteLine("Taask Started");
-                await Task.Delay(2000);
-                Console.WriteLine("Taask Finihsed");
-            }
+                lock (l)
+                {
+                    sum += arr[i];
+                    Console.WriteLine(Task.CurrentId + "  " + Thread.CurrentThread.IsThreadPoolThread);
 
-            async Task work2()
-            {
-                Console.WriteLine("Taask22 Started");
-                await Task.Delay(10);
-                Console.WriteLine("Taask22 Finihsed");
-            }
+                }
+            });
+
+            Console.WriteLine(sum);
 
 
 
