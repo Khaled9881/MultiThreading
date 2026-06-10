@@ -1,10 +1,11 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 namespace Thread_Syncronization
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //int count = 0;
             //System.Threading.Lock lo = new Lock();
@@ -156,17 +157,137 @@ namespace Thread_Syncronization
 
 
 
-            for (int i = 0; i < 10; i++)
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Thread thread = new(work);
+            //    thread.Start();
+            //}
+
+            //void work()
+            //{
+            //    Console.WriteLine($"Thread {Thread.CurrentThread.Name} started Working");
+            //    Thread.Sleep(10000);
+            //    Console.WriteLine($"Thread {Thread.CurrentThread.Name} finished Working");
+            //}
+
+
+            //ThreadPool.QueueUserWorkItem(state =>
+            //{
+            //    Console.WriteLine(state);
+            //}, "Ahmed");
+
+
+            //Thread.CurrentThread.Join();
+            //Console.ReadLine();
+
+
+            //+++++++++++++++++++++
+
+
+            //List<Exception> exceptions = new List<Exception>();
+            //object lockOb = new object();
+
+
+            //Thread thread1 = new Thread(work);
+            //Thread thread2 = new Thread(work);
+
+            //thread1.Start();
+            //thread2.Start();
+
+            //thread1.Join();
+            //thread2.Join();
+
+
+            //foreach (var item in exceptions)
+            //{
+            //    Console.WriteLine(item.Message);
+            //    Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            //}
+
+
+
+            //void work()
+            //{
+            //    try
+            //    {
+            //        throw new InvalidOperationException("Error");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        lock (lockOb)
+            //        {
+            //            exceptions.Add(ex);
+            //        }
+            //    }
+            //}
+
+
+
+            //using var client = new HttpClient();
+            //var task = client.GetStringAsync("https://pokeapiss.co/api/v2/pokemon");
+
+            //task.ContinueWith(t =>
+            //{
+            //    var result = t.Result;
+            //    Console.WriteLine(result);
+
+            //});
+
+
+            //Console.ReadLine();
+
+
+            //Console.WriteLine("start");
+
+            //await Task.Delay(10000);
+
+            //Console.WriteLine("End");
+
+
+            //Console.WriteLine("Start");
+
+            //var delayTask = Task.Delay(10000);
+
+            //var workTask = Task.Run(() =>
+            //{
+            //    for (int i = 0; i < 5; i++)
+            //    {
+            //        Console.WriteLine($"Work {i}");
+            //        Thread.Sleep(1000);
+            //    }
+            //});
+
+            //await delayTask;
+
+            //Console.WriteLine("Delay finished");
+
+            //await workTask;
+
+            //Console.WriteLine("Done");
+
+
+            Console.WriteLine("progeam Startedd");
+            workAsunc();
+            await work2();
+
+            Console.WriteLine("program Ended");
+            Console.ReadLine();
+
+
+
+
+            async Task workAsunc()
             {
-                Thread thread = new(work);
-                thread.Start();
+                Console.WriteLine("Taask Started");
+                await Task.Delay(2000);
+                Console.WriteLine("Taask Finihsed");
             }
 
-            void work()
+            async Task work2()
             {
-                Console.WriteLine($"Thread {Thread.CurrentThread.Name} started Working");
-                Thread.Sleep(10000);
-                Console.WriteLine($"Thread {Thread.CurrentThread.Name} finished Working");
+                Console.WriteLine("Taask22 Started");
+                await Task.Delay(10);
+                Console.WriteLine("Taask22 Finihsed");
             }
 
 
